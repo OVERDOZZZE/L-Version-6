@@ -1,0 +1,50 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+form {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  display: block;
+  width: 300px;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+

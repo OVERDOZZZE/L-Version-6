@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="static 'js/main.js'"></script>
+</head>
+<body>
+    <div class="button-container">
+        <a href="login/"><button class="login">Login</button></a>
+        <div class="adding">
+            <a href="add_book/"><button class="add-book">Add Book</button></a>
+            <a href="add_author/"><button class="add-author">Add Author</button></a>
+            <a href="add_publisher/"><button class="add-publisher">Add Publisher</button></a>
+        </div>
+    </div>
+
+    <div class="book-list">
+        {% for book in books %}
+            <div class="book-item">
+                <h2><a href="book_detail/{{ book.pk }}/">{{ book.title }}</a></h2>
+                <a href="book_detail/{{book.pk}}/"><img src="{{ book.cover_photo.url }}" alt="{{ book.title }}" width="300"></a>
+                <p>Author: {{ book.author.name }}</p>
+                <p>Publisher: {{ book.publisher.name }}</p>
+                <p>Publication date: {{ book.publication_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if books.has_previous %}
+                <a href="?page={{ books.previous_page_number }}">Previous </a>
+            {% endif %}
+
+            {% for i in books.paginator.page_range %}
+                {% if books.number == i %}
+                    <span class="current-page">{{ i }}</span>
+                {% else %}
+                    <a href="?page={{ i }}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if books.has_next %}
+                <a href="?page={{ books.next_page_number }}">Next</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
